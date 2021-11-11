@@ -137,7 +137,7 @@ function Parcels(){
       let category_quantity_selected = parseInt(selectCategory[i].quantity)
       // console.log(`id_category_selected : `,id_category_selected)
       for(let j=0;j<avgPriceProductCategory.length;j++){
-        // console.log(`perulangan j ke ${j}`)
+        // console.log(`perulangan j ke ${j}`)  
         if(id_category_selected === avgPriceProductCategory[j].id_category){
           // console.log(`avgPriceProductCategory : `,avgPriceProductCategory[j].average_price)
           // console.log(`selectCategory quantity : `, category_quantity_selected)
@@ -151,7 +151,7 @@ function Parcels(){
 
   const submitAddParcelHandler = () => {
     if(inputImage.image && inputParcel.name && inputParcel.margin && inputParcel.description ){
-      let price = totalCapitalParcel() + parseInt(inputParcel.margin)
+      let price = Math.floor((totalCapitalParcel() + parseInt(inputParcel.margin))/1000)*1000
       console.log(price)
       let formData = new FormData();
       let obj = {
@@ -199,7 +199,7 @@ function Parcels(){
   const submitEditParcelHandler = () => {
     console.log(`editParcel :`, editParcel)
     if(editParcel.id && editParcel.image && editParcel.name && editParcel.margin && editParcel.description ){
-      let price = totalCapitalParcel() + parseInt(editParcel.margin)
+      let price = Math.floor((totalCapitalParcel() + parseInt(editParcel.margin))/1000)*1000
       console.log(price)
       let formData = new FormData();
       let obj = {
@@ -293,6 +293,7 @@ function Parcels(){
           margin: parcel.margin,
           description: parcel.description
         })
+        
       }
     })
     setshowEditParcelModal(true)
